@@ -1,0 +1,27 @@
+body {
+	background-color: lightgray;
+}
+
+div {
+	display: flex;
+	flex-direction: column;
+}
+
+h1 {
+	color: rebeccapurple;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: black;
+	text-align: center;
+	border: 1px solid;
+}
+
+td, th {
+	background-color: white;
+	padding: 6px;
+}
