@@ -28,21 +28,19 @@ function displayLibrary() {
 	tbl.appendChild(tbody);
 
 	myLibrary.forEach((book) => {
-		const row = document.createElement("tr");
-		const title = document.createElement("td");
-		title.appendChild(document.createTextNode(book.title));
-		row.appendChild(title);
-		const author = document.createElement("td");
-		author.appendChild(document.createTextNode(book.author));
-		row.appendChild(author);
-		const pages = document.createElement("td");
-		pages.appendChild(document.createTextNode(book.pages));
-		row.appendChild(pages);
-		const read = document.createElement("td");
+		const row = tbody.insertRow();
+
+		const title = row.insertCell()
+		const author = row.insertCell();
+		const pages = row.insertCell();
+		const read = row.insertCell();
+
 		const readYet = book.read ? "Read" : "Not read yet";
-		read.appendChild(document.createTextNode(readYet));
-		row.appendChild(read);
-		tbody.appendChild(row);
+
+		title.textContent = book.title;
+		author.textContent = book.author;
+		pages.textContent = book.pages;
+		read.textContent = readYet;
 	});
 }
 
