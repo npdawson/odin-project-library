@@ -1,4 +1,4 @@
-const myLibrary = [];
+var myLibrary = [];
 
 class Book {
     constructor(title, author, pages) {
@@ -22,6 +22,12 @@ function addBookToLibrary(title, author, pages, read) {
 	myLibrary.push(book);
 }
 
+function removeBookFromLibrary(event) {
+	const id = event.target.dataset.id;
+	myLibrary = myLibrary.filter(book => book.id !== id);
+	displayLibrary();
+}
+
 function displayLibrary() {
 	const tbl = document.querySelector("#library");
 	var tbody = tbl.querySelector("tbody");
@@ -38,6 +44,7 @@ function displayLibrary() {
 		const author = row.insertCell();
 		const pages = row.insertCell();
 		const read = row.insertCell();
+		const remove = row.insertCell();
 
 		const readYet = book.read ? "Read" : "Not read yet";
 
@@ -45,6 +52,12 @@ function displayLibrary() {
 		author.textContent = book.author;
 		pages.textContent = book.pages;
 		read.textContent = readYet;
+
+		const removeButton = document.createElement("button");
+		removeButton.textContent = "❌";
+		removeButton.setAttribute("data-id", book.id);
+		removeButton.addEventListener("click", removeBookFromLibrary);
+		remove.appendChild(removeButton);
 	});
 }
 
