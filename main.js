@@ -24,7 +24,11 @@ function addBookToLibrary(title, author, pages, read) {
 
 function displayLibrary() {
 	const tbl = document.querySelector("#library");
-	const tbody = document.createElement("tbody");
+	var tbody = tbl.querySelector("tbody");
+	if (tbody) {
+		tbl.removeChild(tbody);
+	}
+	tbody = document.createElement("tbody");
 	tbl.appendChild(tbody);
 
 	myLibrary.forEach((book) => {
@@ -46,5 +50,26 @@ function displayLibrary() {
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
 addBookToLibrary("Moby Dick", "Herman Melville", 688, false);
+
+const addBookDialog = document.querySelector("#addBookDialog");
+
+const addBookButton = document.querySelector("#addBookShowDialog");
+addBookButton.addEventListener("click", () => {
+	addBookDialog.showModal();
+});
+
+addBookDialog.addEventListener("close", () => {
+	if (addBookDialog.returnValue == "Add") {
+		const form = addBookDialog.querySelector("form");
+		const titleInput = addBookDialog.querySelector("#title").value;
+		const authorInput = addBookDialog.querySelector("#author").value;
+		const pagesInput = addBookDialog.querySelector("#pages").value;
+		const readInput = addBookDialog.querySelector("#read").checked;
+
+		addBookToLibrary(titleInput, authorInput, pagesInput, readInput);
+		displayLibrary();
+		form.reset();
+	}
+});
 
 displayLibrary();

@@ -26,8 +26,34 @@ td, th {
 	padding: 6px;
 }
 
-#addbook {
+.horiz {
+	margin-top: .5em;
+	flex-direction: row;
+}
+
+.confirm, .cancel {
+	width: 5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#addBookShowDialog {
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+label {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+label > input {
+	margin-left: 20px;
+	float: right;
+	width: 8em;
+}
+
+dialog {
+	padding: 10px;
 }

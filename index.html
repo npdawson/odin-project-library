@@ -19,7 +19,34 @@
 					</tr>
 				</thead>
 			</table>
-			<button id="addbook">Add book</button>
+			<button id="addBookShowDialog">Add book</button>
 		</div>
+
+		<dialog id="addBookDialog">
+			<form method="dialog">
+				<div>
+					<label>
+						Title:
+						<input type="text" id="title" required />
+					</label>
+					<label>
+						Author:
+						<input type="text" id="author" required />
+					</label>
+					<label>
+						Page count:
+						<input type="text" id="pages" />
+					</label>
+					<label>
+						Read:
+						<input type="checkbox" id="read" />
+					</label>
+				</div>
+				<div class="horiz">
+					<input type="submit" value="Add" class="confirm" />
+					<button class="cancel" formnovalidate>Cancel</button>
+				</div>
+			</form>
+		</dialog>
 	</body>
 </html>
