@@ -24,6 +24,7 @@ table {
 td, th {
 	background-color: white;
 	padding: 6px;
+	min-width: 6em;
 }
 
 .horiz {

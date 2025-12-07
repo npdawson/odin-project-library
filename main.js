@@ -9,6 +9,10 @@ class Book {
 		this.id = crypto.randomUUID();
     }
 
+	toggleRead() {
+		this.read = !this.read;
+	}
+
 	info() {
 		var info = this.title + " by " + this.author + ", " + this.pages + " pages";
 		var readInfo = this.read ? ", read it" : ", not read yet";
@@ -44,7 +48,7 @@ function displayLibrary() {
 		const author = row.insertCell();
 		const pages = row.insertCell();
 		const read = row.insertCell();
-		const remove = row.insertCell();
+		const actions = row.insertCell();
 
 		const readYet = book.read ? "Read" : "Not read yet";
 
@@ -53,11 +57,21 @@ function displayLibrary() {
 		pages.textContent = book.pages;
 		read.textContent = readYet;
 
+		const toggleReadButton = document.createElement("button");
+		toggleReadButton.textContent = "Toggle Read";
+		toggleReadButton.setAttribute("data-id", book.id);
+		toggleReadButton.addEventListener("click", (event) => {
+			const id = event.target.dataset.id;
+			const book = myLibrary.find(b => b.id === id);
+			book.toggleRead();
+			displayLibrary();
+		});
+		actions.appendChild(toggleReadButton);
 		const removeButton = document.createElement("button");
 		removeButton.textContent = "❌";
 		removeButton.setAttribute("data-id", book.id);
 		removeButton.addEventListener("click", removeBookFromLibrary);
-		remove.appendChild(removeButton);
+		actions.appendChild(removeButton);
 	});
 }
 
